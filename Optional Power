@@ -1,4 +1,4 @@
-// Z Uzyciem Alert i Confirm 
+// Z Uzyciem Alert i Confirm ------------------------------------------------------------------
 function optionalPow(nr,power){	
 		var c = confirm("Are you sure?");
 		if(c)alert("Result of you calculation is:" + Math.pow(nr, power));
@@ -25,4 +25,63 @@ function optionalPow(nr,power){
 	
 	document.body.appendChild(var1);
 	document.body.appendChild(var2); 
-	document.body.appendChild(calc_button); 	
+	document.body.appendChild(calc_button); 
+//--------------------------------------------------------------------------------------------------	
+// Modyfikacja DOM ---------------------------------------------------------------------------------
+var confirmationDiv = document.createElement("div");
+	var resultDiv = document.createElement("div");
+	
+	function recuPow(nr,power){
+		if(power == 0)
+			return 1;
+		return nr * optionalPow(nr,power-1)
+	}
+	var confirmButton = document.createElement("button");
+		var cancelButton = document.createElement("button");		
+		confirmButton.setAttribute("type", "button");
+		cancelButton.setAttribute("type", "button");
+	function optionalPow(nr,power){		
+	console.log(nr, power);
+		
+		confirmButton.innerHTML = "Yes";
+		cancelButton.innerHTML = "No";
+		
+		confirmationDiv.appendChild(confirmButton); 
+		confirmationDiv.appendChild(cancelButton); 		
+		
+		confirmButton.onclick = () => { 	
+		 var result = Math.pow(nr, power);
+		  resultDiv.innerHTML = "Result = " + result; 
+		  confirmButton.parentNode.removeChild(confirmButton);
+		  cancelButton.parentNode.removeChild(cancelButton);	
+		}
+		
+		cancelButton.onclick = () => { 	
+		var result = Math.pow(power, nr);
+		  resultDiv.innerHTML = "Result = " + result; 
+		  confirmButton.parentNode.removeChild(confirmButton);
+		  cancelButton.parentNode.removeChild(cancelButton);		  
+		}			
+	}
+	
+	var var1 = document.createElement("input");
+	var var2 = document.createElement("input");
+	var calcButton = document.createElement("button");	
+	
+	var1.setAttribute("type", "text");
+	var2.setAttribute("type", "text");
+	calcButton.setAttribute("type", "button");	
+	
+	calcButton.innerHTML = "Calculate";		
+	
+	document.body.appendChild(var1);
+	document.body.appendChild(var2); 
+	document.body.appendChild(confirmationDiv); 	
+	document.body.appendChild(calcButton); 
+	document.body.appendChild(resultDiv); 
+	
+	calcButton.onclick = function () { 	
+	  optionalPow(var1.value, var2.value);
+	}
+	
+
