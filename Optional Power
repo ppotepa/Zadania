@@ -8,9 +8,6 @@ function optionalPow(nr,power){
 	var var2 = document.createElement("input");
 	var var calc_button = document.createElement("button");
 	
-	var confirmButton = document.createElement("button");
-	var cancelButton = document.createElement("button");
-	
 	var1.setAttribute("type", "text");
 	var2.setAttribute("type", "text");
 	
