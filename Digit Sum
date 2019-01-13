@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace occ
+{
+    class Program
+    {
+        class Triple {
+            public Triple() { }
+
+            public Triple(int number, int index)
+            {
+                this.number = number;
+                var str = number.ToString();
+                var sum = 0;
+                foreach (var c in str)
+                    sum += Convert.ToInt32(c - '0');
+
+                this.sum = sum;
+                this.index = index;
+            }
+
+            public int number { get; }
+            public int sum { get; }
+            public int index { get; }
+            
+        }
+
+        static void Main(string[] args)
+        {
+            Triple[] triples = new Triple[5];
+            /*Testing           
+            triples[0] = new Triple(19, 0);
+            triples[1] = new Triple(22, 1);
+            triples[2] = new Triple(33, 2);
+            triples[3] = new Triple(91, 9);
+            triples[4] = new Triple(55, 4);
+            */
+
+            int n = 0;
+            string result = "";
+            n = Convert.ToInt32(Console.ReadLine());           
+            int[] tab = new int[n];
+            triples = new Triple[n];
+            for (int i = 0; i < n; tab[i++] = Convert.ToInt32(Console.ReadLine()));
+            for (int i = 0; i < n; triples[i] = new Triple(tab[i], i++));
+            
+            var maximalGroup = triples.Where(t => t.sum == triples.Max(tr => tr.sum)).OrderByDescending(t=>t.number);
+            var maximal = maximalGroup.FirstOrDefault();
+            var maximalSumJoined = string.Join(" and ", maximal.number.ToString().ToList());
+           
+            //Console.WriteLine(maximalSumJoined);
+            
+                result = $"The maximum digit sum we can get is {maximal.sum} " +
+                    $"by summing { maximalSumJoined } from the number {maximal.number} " +
+                    $"in the position {maximal.index} of the array so our answer is {maximal.index}.";
+           
+            Console.WriteLine(result);
+            
+        }
+    }
+}
