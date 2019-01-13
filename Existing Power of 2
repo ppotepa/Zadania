@@ -22,9 +22,9 @@ namespace Powers
             var strInput = Console.ReadLine();
             var split = strInput.Split(',').Select(UInt32.Parse).ToList();
             var max = split.Max();        
-            var next_powers_of_two = powers(max);
-            var as_string = string.Join(",", next_powers_of_two.Select(n => n.ToString()).ToArray());
-            Console.WriteLine(as_string);
+            var nextPowerOfTwo = powers(max);
+            var asString = string.Join(",", nextPowerOfTwo.Select(n => n.ToString()).ToArray());
+            Console.WriteLine(asString);
 
         }
         
