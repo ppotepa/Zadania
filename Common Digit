@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConsoleApp3
+namespace DescriptionBuilding
 {
-    class Program2
+    class Program
     {
-
-        const string legal = "1234567890";
 
         public class Translator
         {
@@ -46,12 +44,12 @@ namespace ConsoleApp3
             private Dictionary<char, int> groupedByCount;
             private string joined;
 
-            Func<IGrouping<char, char>, char> orderByKeyFunc = (el) => el.Key;
+            Func<IGrouping<char, char>, char> orderByKey = (el) => el.Key;
             Func<IGrouping<char, char>, int> orderByCount = (el) => el.Count();
 
             private Dictionary<char, int> Group<T>(List<string> words, Func<IGrouping<char, char>, T> orderByFunct)
             {
-                var grouped = joined
+                return joined
                  .Where(char.IsDigit)
                  .GroupBy(c => c)
                  .OrderBy(orderByFunct)
@@ -59,36 +57,35 @@ namespace ConsoleApp3
                  {
                      Digit = gr.Key,
                      Count = gr.Count()
-                 }).ToDictionary(o => o.Digit, o => o.Count);
-                return grouped;
+                 }).ToDictionary(o => o.Digit, o => o.Count); ;
             }
 
             private string GenerateBracketDescription(char digit)
             {
-                string bdesc = "(";
-                int current_word = 0;
-                string last_word = words.Where(c => c.Contains(digit)).Last();
+                string bracketDescription = "(";
+                int currentWord = 0;
+                string lastWord = words.Where(c => c.Contains(digit)).Last();
 
                 foreach (var word in words)
                 {
-                    bool last = string.Equals(words[current_word], last_word);
+                    bool last = string.Equals(words[currentWord], lastWord);
                     var count = word.Count(c => c == digit);
                     if (count > 0)
                     {
-                        var translatedCount = current_word > 0 ? Translator.Twenty[count].ToLower() : Translator.Twenty[count];
+                        var translatedCount = currentWord > 0 ? Translator.Twenty[count].ToLower() : Translator.Twenty[count];
                         var translatedTimes = Translator.Times(count);
-                        var translatedOrdinal = Translator.TwentyOrdinal[current_word + 1];
+                        var translatedOrdinal = Translator.TwentyOrdinal[currentWord + 1];
 
-                        var another = (last && current_word != 0) ? $" and {translatedCount} another" : "";
-                        if (last && current_word != 0) translatedCount = "";
+                        var another = (last && currentWord != 0) ? $" and {translatedCount} another" : "";
+                        if (last && currentWord != 0) translatedCount = "";
 
-                        bdesc += $"{(last && current_word != 0 ? "" : translatedCount)} {another} {translatedTimes} on the {translatedOrdinal.ToLower()} number";
-                        if (!last) bdesc += ", ";
-                        current_word++;
+                        bracketDescription += $"{(last && currentWord != 0 ? "" : translatedCount)} {another} {translatedTimes} on the {translatedOrdinal.ToLower()} number";
+                        if (!last) bracketDescription += ", ";
+                        currentWord++;
                     }
                     else continue;
                 }
-                return bdesc + ")";
+                return bracketDescription + ")";
             }
 
             public Description BuildDescription(List<string> words)
@@ -97,12 +94,11 @@ namespace ConsoleApp3
 
                 joined = string.Join("", words);
 
-                groupedByKey = Group<char>(words, orderByKeyFunc);
+                groupedByKey = Group<char>(words, orderByKey);
                 groupedByCount = Group<int>(words, orderByCount);
 
                 this.words = words;
 
-                //var sameOcc = words.Where(w=>w.Count(c=>c==))
                 var same = groupedByCount.Where(i => i.Value == groupedByCount.Values.Max()).OrderBy(i => i.Key);
                 var maxCount = same.Last().Value;
                 var maxKey = same.Last().Key;
@@ -132,12 +128,6 @@ namespace ConsoleApp3
                 }
             }
 
-            private string GenerateSummary()
-            {
-                string summary = "";
-                return summary;
-
-            }
         }
 
         static void Main(string[] args)
@@ -157,13 +147,14 @@ namespace ConsoleApp3
             int n = Convert.ToInt32(Console.ReadLine());
             List<string> words = new List<string>();
             if (n < 2 || n > 20) Console.WriteLine("Wrong input");
-            else {
-                for(var i = 0; i++<n;)
-                    words.Add((Console.ReadLine()));              
+            else
+            {
+                for (var i = 0; i++ < n;)
+                    words.Add((Console.ReadLine()));
             }
- 
+
             var joined = string.Join("", words);
-            
+
             var g = new DescriptionFactory()
               .BuildDescription(words);
 
