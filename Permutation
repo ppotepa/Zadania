@@ -6,7 +6,6 @@ namespace Permutation
     {
         static void Main(string[] args)
         {
-
             int[] tab1 = new int[11];
             int[] tab2 = new int[11];
 
