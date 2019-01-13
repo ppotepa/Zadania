@@ -45,19 +45,21 @@ namespace occ
             triples = new Triple[n];
             for (int i = 0; i < n; tab[i++] = Convert.ToInt32(Console.ReadLine()));
             for (int i = 0; i < n; triples[i] = new Triple(tab[i], i++));
-            
-            var maximalGroup = triples.Where(t => t.sum == triples.Max(tr => tr.sum)).OrderByDescending(t=>t.number);
-            var maximal = maximalGroup.FirstOrDefault();
-            var maximalSumJoined = string.Join(" and ", maximal.number.ToString().ToList());
-           
-            //Console.WriteLine(maximalSumJoined);
+
+
+            var maximal = triples.Where(t => t.sum == triples
+            .Max(tr => tr.sum))
+            .OrderByDescending(t => t.number)
+            .FirstOrDefault();
+
+            var maximalSumJoined = string.Join(" and ", maximal.number.ToString()
+                .ToList());          
             
                 result = $"The maximum digit sum we can get is {maximal.sum} " +
                     $"by summing { maximalSumJoined } from the number {maximal.number} " +
-                    $"in the position {maximal.index} of the array so our answer is {maximal.index}.";
-           
-            Console.WriteLine(result);
+                    $"in the position {maximal.index} of the array so our answer is {maximal.index}.";   
             
+            Console.WriteLine(result);            
         }
     }
 }
