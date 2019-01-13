@@ -12,15 +12,17 @@
 	var var2;
 	var calc_button;
 	
-	var1 = document.createElement("input");
-	var2 = document.createElement("input");
+	var var1 = document.createElement("input");
+	var var2 = document.createElement("input");
+	var var calc_button = document.createElement("button");
+	
 	var1.setAttribute("type", "text");
-	var2.setAttribute("type", "text");	
-	var calc_button = document.createElement("button");
-	calc_button.setAttribute("id", "btn");
-	calc_button.innerHTML = "Calculate";
+	var2.setAttribute("type", "text");
 	var1.type = "text";
 	var2.type = "text";
+	
+	calc_button.setAttribute("id", "btn");
+	calc_button.innerHTML = "Calculate";	
 	calc_button.type = "button";
 	calc_button.text = "Calculate";
 	
