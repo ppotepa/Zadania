@@ -33,6 +33,7 @@
 	document.body.appendChild(var1);
 	document.body.appendChild(var2); 
 	document.body.appendChild(calc_button); 
+	
 </script>
 </body>
 </html>
