@@ -1,16 +1,17 @@
 <html>
 <body>
 <script>
-	var var1;
-	var var2;
-	var calc_button;
 	
 	function optionalPow(nr,power){	
 		var c = confirm("Are you sure?");
 		if(c)alert("Result of you calculation is:" + Math.pow(nr, power));
 		else alert("Result of you calculation is:" + Math.pow(power, nr));		
 	}
-
+	
+	var var1;
+	var var2;
+	var calc_button;
+	
 	var1 = document.createElement("input");
 	var2 = document.createElement("input");
 	var1.setAttribute("type", "text");
