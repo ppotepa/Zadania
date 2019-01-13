@@ -1,7 +1,7 @@
-function optionalPow(a, b) {
- var pow = a;
- for(var i = 1; i < b; i++)pow *= a;
- return pow;
+function optionalPow(nr,power){
+    if(power ==0)
+        return 1;
+    return nr * optionalPow(nr,power-1)
 }
 
 
