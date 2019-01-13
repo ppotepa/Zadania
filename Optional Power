@@ -1,30 +1,26 @@
-<html>
-<body>
-<script>
-	
-	function optionalPow(nr,power){	
+// Z Uzyciem Alert i Confirm 
+function optionalPow(nr,power){	
 		var c = confirm("Are you sure?");
 		if(c)alert("Result of you calculation is:" + Math.pow(nr, power));
 		else alert("Result of you calculation is:" + Math.pow(power, nr));		
 	}
-	
-	var var1;
-	var var2;
-	var calc_button;
-	
 	var var1 = document.createElement("input");
 	var var2 = document.createElement("input");
 	var var calc_button = document.createElement("button");
 	
+	var confirmButton = document.createElement("button");
+	var cancelButton = document.createElement("button");
+	
 	var1.setAttribute("type", "text");
 	var2.setAttribute("type", "text");
+	
 	var1.type = "text";
 	var2.type = "text";
 	
-	calc_button.setAttribute("id", "btn");
+	
 	calc_button.innerHTML = "Calculate";	
 	calc_button.type = "button";
-	calc_button.text = "Calculate";
+	
 	
 	calc_button.onclick = () => { 	
 	  optionalPow(var1.value, var2.value);	  
@@ -32,8 +28,4 @@
 	
 	document.body.appendChild(var1);
 	document.body.appendChild(var2); 
-	document.body.appendChild(calc_button); 
-	
-</script>
-</body>
-</html>
+	document.body.appendChild(calc_button); 	
