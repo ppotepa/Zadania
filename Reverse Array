@@ -12,8 +12,6 @@ namespace ReserveArray
             //Array arr = Array.CreateInstance(typeof(int), n); //mozna to rowniez zrobic przy uzyciu Array.Reverse();
             for (int i = 0; i < n; arr[n-++i] = Convert.ToInt32(Console.ReadLine())){};
             for (int i = 0; i < n;) Console.Write(arr[i++] + " ");
-            Console.WriteLine();
-
         }
     }
 }
