@@ -26,7 +26,7 @@ function optionalPow(nr,power){
 	document.body.appendChild(var1);
 	document.body.appendChild(var2); 
 	document.body.appendChild(calc_button); 
-//--------------------------------------------------------------------------------------------------	
+	
 // Modyfikacja DOM ---------------------------------------------------------------------------------
 var confirmationDiv = document.createElement("div");
 	var resultDiv = document.createElement("div");
