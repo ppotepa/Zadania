@@ -1,0 +1,18 @@
+//TS
+function fixage(arr: number[]): string { 
+    var filtered = arr.filter(a => a > 18 && a < 60);
+    var result = filtered.join(", "); 
+    if (result) return result;
+    else return "NA";
+}
+//JS
+var ages = [1, 2];
+function fixage(arr) {
+    var filtered = arr.filter(function (a) { return a > 18 && a < 60; });
+    var result = filtered.join(", ");
+    if (result)
+        return result;
+    else
+        return "NA";
+}
+
