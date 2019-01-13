@@ -1,21 +1,35 @@
-function optionalPow(nr,power){
-    if(power ==0)
-        return 1;
-    return nr * optionalPow(nr,power-1)
-}
+<html>
+<body>
+<script>
+	var var1;
+	var var2;
+	var calc_button;
+	
+	function optionalPow(nr,power){	
+		var c = confirm("Are you sure?");
+		if(c)alert("Result of you calculation is:" + Math.pow(nr, power));
+		else alert("Result of you calculation is:" + Math.pow(power, nr));		
+	}
 
-
-
-var1.type = "text";
-var2.type = "text";
-calc_button.type = "button";
-calc_button.value = 'calculate power';
-calc_button.onclick = () => { 
-var c =  confirm("Are you sure?");
-  if(c)alert("result of you calculation is:" + optionalPow(var1.value, var2.value));
-  else alert(optionalPow(var2.value, var1.value));
-}
-
-document.body.appendChild(var1);
-document.body.appendChild(var2); 
-document.body.appendChild(calc_button); 
+	var1 = document.createElement("input");
+	var2 = document.createElement("input");
+	var1.setAttribute("type", "text");
+	var2.setAttribute("type", "text");	
+	var calc_button = document.createElement("button");
+	calc_button.setAttribute("id", "btn");
+	calc_button.innerHTML = "Calculate";
+	var1.type = "text";
+	var2.type = "text";
+	calc_button.type = "button";
+	calc_button.text = "Calculate";
+	
+	calc_button.onclick = () => { 	
+	  optionalPow(var1.value, var2.value);	  
+	}
+	
+	document.body.appendChild(var1);
+	document.body.appendChild(var2); 
+	document.body.appendChild(calc_button); 
+</script>
+</body>
+</html>
