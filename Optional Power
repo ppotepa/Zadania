@@ -1,0 +1,21 @@
+function optionalPow(a, b) {
+ var pow = a;
+ for(var i = 1; i < b; i++)pow *= a;
+ return pow;
+}
+
+
+
+var1.type = "text";
+var2.type = "text";
+calc_button.type = "button";
+calc_button.value = 'calculate power';
+calc_button.onclick = () => { 
+var c =  confirm("Are you sure?");
+  if(c)alert("result of you calculation is:" + optionalPow(var1.value, var2.value));
+  else alert(optionalPow(var2.value, var1.value));
+}
+
+document.body.appendChild(var1);
+document.body.appendChild(var2); 
+document.body.appendChild(calc_button); 
