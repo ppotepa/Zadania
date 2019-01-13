@@ -17,16 +17,16 @@ namespace Palindrome
             }
             return builder.ToString();
         }
-        
+
         static void Main(string[] args)
-        {   
+        {
             string input = Console.ReadLine();
             input = Strip(input);
             char[] ca = input.ToCharArray();
             Array.Reverse(ca);
 
             string rev = new string(ca);
-            if (String.Equals(input, rev)) Console.WriteLine("YES");
+            if (String.Equals(input, rev) && rev.Length > 0) Console.WriteLine("YES");
             else Console.WriteLine("NO");
         }
     }
