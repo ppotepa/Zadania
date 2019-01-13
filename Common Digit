@@ -64,11 +64,13 @@ namespace DescriptionBuilding
             {
                 string bracketDescription = "(";
                 int currentWord = 0;
-                string lastWord = words.Where(c => c.Contains(digit)).Last();
+                string lastWord = words.Where(c => c.Contains(digit)).Last();    
+                string nextWord = words.Where(c => !c.Contains(digit)).First();
 
                 foreach (var word in words)
                 {
-                    bool last = string.Equals(words[currentWord], lastWord);
+                    //bool last = string.Equals(words[currentWord], lastWord);
+                    bool last = !nextWord.Contains(digit);
                     var count = word.Count(c => c == digit);
                     if (count > 0)
                     {
